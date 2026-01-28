@@ -3,250 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get Started</title>
+  <title>Professional Dark Purple Theme</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Mona Sans font -->
   <style>
-    @font-face {
-      font-family: "Mona Sans";
-      src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"),
-           url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
-      font-weight: 100 1000;
-    }
-
-    @layer properties {
-      @property --bg-position { syntax: "<number>"; inherits: true; initial-value: 100; }
-      @property --after-blur    { syntax: "<number>"; inherits: true; initial-value: 0; }
-      @property --after-opacity { syntax: "<number>"; inherits: true; initial-value: 1; }
-      @property --before-opacity{ syntax: "<number>"; inherits: true; initial-value: 0.3; }
-      @property --btn-scale     { syntax: "<number>"; inherits: true; initial-value: 1; }
-    }
-
     :root {
-      --debug: 0;
-      --body-bg: #0f0f1a;
-      --btn-bg: rgba(0,0,0,0.4);
-      --btn-border-width: 1.5;
-      --btn-scale: 1;
-      --after-bg: linear-gradient(to right, #000 0%, #000 100%);
-      --after-blur: 10;
-      --after-opacity: 0.9;
-      --after-pos-y: 8;
-      --before-opacity: 0.4;
-      --bg-position: 100;
-      --color-white:   hsl(0, 0%, 100%);
-      --color-cyan:    hsl(180, 100%, 50%);
-      --color-blue:    hsl(240, 100%, 50%);
-      --color-purple:  hsl(270, 100%, 50%);
-      --color-pink:    hsl(330, 40%, 70%);
-      --color-red:     hsl(0, 100%, 50%);
-      --color-yellow:  hsl(60, 100%, 50%);
-      --color-lime:    hsl(90, 100%, 75%);
-      --color-orange:  oklch(69.1% 0.223 36.85);
-    }
-
-    @supports (color: color(display-p3 0 0 0)) {
-      :root {
-        --color-white:  color(display-p3 1 1 1);
-        --color-cyan:   color(display-p3 0 1 1);
-        --color-blue:   color(display-p3 0 0 1);
-        --color-purple: color(display-p3 0.5 0 1);
-        --color-pink:   color(display-p3 1 0.4 0.7);
-        --color-red:    color(display-p3 1 0 0);
-        --color-yellow: color(display-p3 1 1 0);
-        --color-lime:   color(display-p3 0.75 1 0);
-        --color-orange: color(display-p3 0.96 0.39 0.2);
-      }
+      --bg-dark: #0a0014;
+      --bg-gradient: linear-gradient(135deg, #0d001a 0%, #1a0033 100%);
+      --text-primary: #f1f1f1;
+      --text-secondary: #c4c4c4;
+      --purple-accent: #8b5cf6;
+      --purple-dark: #6d28d9;
+      --purple-glow: rgba(139, 92, 246, 0.15);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(139, 92, 246, 0.18);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-primary);
       min-height: 100vh;
-      background: var(--body-bg);
-      font-family: 'Inter', "Mona Sans", system-ui, sans-serif;
-      color: #e0e0e0;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    .background {
+    /* Subtle animated background glow */
+    .bg-glow {
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+      background: radial-gradient(circle at 30% 20%, var(--purple-glow) 0%, transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
       z-index: -2;
     }
 
-    .background::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(100, 200, 255, 0.08) 0%, transparent 50%);
-      opacity: 0.6;
-      z-index: -1;
-    }
-
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 3.5rem 3rem;
-      max-width: 520px;
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    header {
+      padding: 3rem 5% 2rem;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
     }
 
     h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(90deg, #c0d0ff, #a0b0ff);
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #c084fc, #8b5cf6, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
     }
 
-    p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      opacity: 0.9;
-      margin-bottom: 2rem;
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    /* ── The rainbow animated button ── */
-    button {
-      all: unset;
-      cursor: pointer;
-      transform: scale(var(--btn-scale));
-      transition: 
-        --bg-position 2.8s ease,
-        --after-blur 0.4s ease,
-        --before-opacity 0.4s ease,
-        --btn-scale 0.25s cubic-bezier(0.76, -0.25, 0.51, 1.13);
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
     }
 
-    button > div {
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
       position: relative;
-      padding: 1rem 2.8rem;
-      background: var(--btn-bg);
-      border-radius: 12px;
       overflow: hidden;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: transparent;           /* hides any text if present */
-      isolation: isolate;
     }
 
-    button div::after {
-      content: "";
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+
+    .card::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      background: var(--after-bg) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
-      transform: translateY(calc(var(--after-pos-y) * 1px));
-      filter: blur(calc(var(--after-blur) * 1px));
-      opacity: var(--after-opacity);
-      z-index: -2;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.6s ease;
       pointer-events: none;
     }
 
-    button div::before {
-      content: "";
-      position: absolute;
-      inset: calc(var(--btn-border-width) * -1px);
-      width: calc(100% + calc(var(--btn-border-width) * 2px));
-      height: calc(100% + calc(var(--btn-border-width) * 2px));
-      background: linear-gradient(to right,
-        var(--color-white), var(--color-white),
-        var(--color-cyan), var(--color-blue), var(--color-purple),
-        var(--color-pink), var(--color-red), var(--color-yellow),
-        var(--color-lime), var(--color-white), var(--color-white)
-      ) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
-      border-radius: 14px;
-      opacity: var(--before-opacity);
-      z-index: -1;
-      pointer-events: none;
+    .card:hover::before {
+      opacity: 1;
     }
 
-    button:hover {
-      --btn-scale: 1.06;
-      --bg-position: 0;
-      --after-bg: linear-gradient(to right,
-        var(--color-white), var(--color-white),
-        var(--color-cyan), var(--color-blue), var(--color-purple),
-        var(--color-pink), var(--color-red), var(--color-yellow),
-        var(--color-lime), var(--color-white), var(--color-white)
-      );
-      --after-blur: 28;
-      --after-opacity: 0.35;
-      --after-pos-y: 0;
-      --before-opacity: 1;
+    .card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--purple-accent);
     }
 
-    button:active {
-      --btn-scale: 0.97;
-      --after-blur: 12;
+    .card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
     }
 
-    .hint {
-      font-size: 0.95rem;
-      opacity: 0.55;
-      letter-spacing: 0.5px;
-      user-select: none;
+    .btn {
+      display: inline-block;
       margin-top: 1.5rem;
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, var(--purple-accent), var(--purple-dark));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
     }
 
-    @media (max-width: 500px) {
-      .card { padding: 2.5rem 2rem; }
-      h1 { font-size: 2.2rem; }
-      button div { padding: 0.9rem 2.2rem; font-size: 1.2rem; }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(139, 92, 246, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.6rem; }
+      main { padding: 3rem 5%; }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-  
-  <div class="container">
-    <div class="card">
-      <h1>Welcome</h1>
-      <p>This is your clean glassmorphism entry point. Click the button below to begin.</p>
-      
-      <button id="startBtn">
-        <div>
-          <!-- Empty → no text visible, but rainbow still animates over the area -->
-        </div>
-      </button>
-      <div class="hint">click to get started</div>
-    </div>
-  </div>
+  <div class="bg-glow"></div>
 
-  <script>
-    document.getElementById("startBtn").addEventListener("click", () => {
-      window.location.href = "home.html";
-    });
-  </script>
+  <header>
+    <h1>Your Professional Space</h1>
+    <p class="subtitle">Elegant dark theme with sophisticated purple accents — modern, clean, and premium.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Feature One</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="card">
+      <h2>Feature Two</h2>
+      <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+      <a href="#" class="btn">Get Started</a>
+    </div>
+
+    <div class="card">
+      <h2>Feature Three</h2>
+      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.</p>
+      <a href="#" class="btn">Explore</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 • Built with a professional dark purple aesthetic</p>
+  </footer>
 </body>
 </html>
