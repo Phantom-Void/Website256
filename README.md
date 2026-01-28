@@ -19,8 +19,6 @@
 
 - 📫 How to reach me **plusfireball9@gmail.com**
 
-- 📄 Know about my experiences [[im 15 gimmi a break]]([im 15 gimmi a break])
-
 - ⚡ Fun fact **I can solve a Rubiks cube in under 45 seconds**
 
 <h3 align="left">Connect with me:</h3>
