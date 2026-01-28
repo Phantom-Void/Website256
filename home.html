@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reuse most of the same styles for consistency */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      color: #e0e0e0;
+      background: #0f0f1a;
+    }
+    .background {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+      z-index: -2;
+    }
+    .container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, #c0d0ff, #a0b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+    p { font-size: 1.15rem; line-height: 1.7; opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <div class="card">
+      <h1>Home Page</h1>
+      <p>Welcome to the main content! This is where your real site begins.</p>
+      <p>You can add sections, images, links, or whatever you need here. The glass + dark theme carries over for consistency.</p>
+      <p>Edit this file freely — add more cards, a navbar, etc.</p>
+    </div>
+  </div>
+</body>
+</html>
