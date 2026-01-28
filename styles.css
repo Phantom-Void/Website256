@@ -1,0 +1,109 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  color: #e0e0e0;
+  background: #0f0f1a;
+  overflow-x: hidden;
+}
+
+/* Nice dark gradient background */
+.background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+  z-index: -2;
+}
+
+/* Optional subtle animated gradient or noise — remove if you want it fully static */
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(100, 200, 255, 0.08) 0%, transparent 50%);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* Center everything */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* The glass card */
+.card {
+  background: rgba(255, 255, 255, 0.07);     /* semi-transparent white */
+  backdrop-filter: blur(16px) saturate(180%); /* the magic glass effect */
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12); /* subtle edge highlight */
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #c0d0ff, #a0b0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  opacity: 0.9;
+}
+
+button {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.06);
+}
+
+.small {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 2rem;
+}
+
+/* Mobile friendliness */
+@media (max-width: 500px) {
+  .card {
+    padding: 2.2rem 1.8rem;
+  }
+  h1 { font-size: 2rem; }
+}
