@@ -83,40 +83,29 @@
       opacity: 0.9;
     }
 
-    /* The button — no text, just a styled circle with arrow feel */
+    /* Rectangular button — completely empty inside */
     .start-btn {
-      width: 90px;
-      height: 90px;
+      width: 220px;
+      height: 70px;
       background: rgba(255, 255, 255, 0.13);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 50%;
+      border-radius: 16px;              /* rounded rectangle */
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
+      margin: 1.5rem auto 0.5rem;
     }
 
     .start-btn:hover {
       background: rgba(255, 255, 255, 0.25);
-      transform: scale(1.12);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
 
-    .start-btn::before {
-      content: '↓';
-      font-size: 2.2rem;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 300;
-    }
-
-    /* Hint text below button */
+    /* Hint text below the button */
     .hint {
       font-size: 0.95rem;
       opacity: 0.55;
-      margin-top: 1.5rem;
       letter-spacing: 0.5px;
       user-select: none;
     }
@@ -126,8 +115,10 @@
         padding: 2.5rem 2rem;
       }
       h1 { font-size: 2.2rem; }
-      .start-btn { width: 80px; height: 80px; }
-      .start-btn::before { font-size: 2rem; }
+      .start-btn {
+        width: 180px;
+        height: 60px;
+      }
     }
   </style>
 </head>
@@ -137,7 +128,7 @@
   <div class="container">
     <div class="card">
       <h1>Welcome</h1>
-      <p>This is your clean glassmorphism entry point. Click below to begin.</p>
+      <p>This is your clean glassmorphism entry point. Click the button below to begin.</p>
       
       <button class="start-btn" id="startBtn"></button>
       <div class="hint">click to get started</div>
