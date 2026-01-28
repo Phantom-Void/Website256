@@ -3,11 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Glass Dark Theme</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Get Started</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      color: #e0e0e0;
+      background: #0f0f1a;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+      z-index: -2;
+    }
+
+    .background::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(100, 200, 255, 0.08) 0%, transparent 50%);
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 3.5rem 3rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(90deg, #c0d0ff, #a0b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* The button — no text, just a styled circle with arrow feel */
+    .start-btn {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .start-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .start-btn::before {
+      content: '↓';
+      font-size: 2.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+
+    /* Hint text below button */
+    .hint {
+      font-size: 0.95rem;
+      opacity: 0.55;
+      margin-top: 1.5rem;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 2.5rem 2rem;
+      }
+      h1 { font-size: 2.2rem; }
+      .start-btn { width: 80px; height: 80px; }
+      .start-btn::before { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
   <div class="background"></div>
@@ -15,14 +137,17 @@
   <div class="container">
     <div class="card">
       <h1>Welcome</h1>
-      <p>Welcom to Website256 my website with all my current projects and just a place for me to put random stuff I guess have fun!</p>
+      <p>This is your clean glassmorphism entry point. Click below to begin.</p>
       
-      <button id="btn">Click me</button>
-      
-      <p class="small">Built with pure HTML/CSS/JS • GitHub Pages ready</p>
+      <button class="start-btn" id="startBtn"></button>
+      <div class="hint">click to get started</div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("startBtn").addEventListener("click", () => {
+      window.location.href = "home.html";
+    });
+  </script>
 </body>
 </html>
