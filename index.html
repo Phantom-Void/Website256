@@ -6,97 +6,130 @@
   <title>Website256</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0a0014;
       --bg-gradient: linear-gradient(135deg, #0d001a 0%, #1a0033 100%);
       --text-primary: #f1f1f1;
-      --text-secondary: #c4c4c4;
+      --text-secondary: #b0b0b0; /* Adjusted to a medium gray for more professional tone */
+      --gray-light: #d4d4d4;
+      --gray-medium: #6b6b6b;
+      --gray-dark: #2a2a2a;
+      --black-tone: #0f0f0f; /* Added black tone for deeper shadows and elements */
       --purple-accent: #8b5cf6;
       --purple-dark: #6d28d9;
+      --purple-light: #a78bfa;
       --purple-glow: rgba(139, 92, 246, 0.15);
-      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-bg: rgba(10, 10, 10, 0.7); /* Shifted to a darker, grayer glass effect with black tones */
       --glass-border: rgba(139, 92, 246, 0.18);
-      --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.6); /* Enhanced shadow with more black depth */
+      --shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.8);
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Poppins', system-ui, sans-serif; /* Switched to Poppins for a slightly more playful, modern feel */
       background: var(--bg-gradient);
       color: var(--text-primary);
       min-height: 100vh;
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative; /* For full-page glow positioning */
     }
-
-    /* Subtle animated background glow */
+    /* Full-page purple glow animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+      opacity: 0.6;
+      animation: purple-pulse 3s ease-in-out infinite;
+      z-index: -2; /* Behind all content */
+      pointer-events: none;
+    }
+    @keyframes purple-pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+      }
+    }
+    /* Subtle animated background glow (kept as secondary layer) */
     .bg-glow {
       position: fixed;
       inset: 0;
       background: radial-gradient(circle at 30% 20%, var(--purple-glow) 0%, transparent 60%);
-      opacity: 0.6;
+      opacity: 0.5; /* Slightly reduced for slicker, less distracting look */
       pointer-events: none;
-      z-index: -2;
+      z-index: -3; /* Even further back */
+      animation: glow-pulse 20s ease-in-out infinite alternate;
     }
-
+    @keyframes glow-pulse {
+      0% { opacity: 0.4; }
+      100% { opacity: 0.6; }
+    }
     header {
-      padding: 3rem 5% 2rem;
+      padding: 4rem 5% 3rem; /* Increased padding for better spacing */
       text-align: center;
-      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.08); /* Subtler border */
+      position: relative; /* For positioning if needed */
+      overflow: hidden; /* To contain if needed */
+      z-index: 1; /* Above the glow */
     }
-
     h1 {
-      font-size: 3.2rem;
+      font-size: 3.5rem; /* Slightly larger for impact */
       font-weight: 700;
-      background: linear-gradient(90deg, #c084fc, #8b5cf6, #a78bfa);
+      background: linear-gradient(90deg, var(--purple-light), var(--purple-accent), var(--purple-dark));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1; /* Ensure text is above any layers */
     }
-
     .subtitle {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--text-secondary);
-      max-width: 600px;
+      max-width: 700px; /* Wider for better readability */
       margin: 0 auto;
+      font-weight: 400; /* Lighter weight for professionalism */
     }
-
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 4rem 5%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.5rem;
+      gap: 3rem; /* Increased gap for slicker layout */
+      position: relative;
+      z-index: 1; /* Above the glow */
     }
-
     .card {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(150%); /* Enhanced blur for slick glass effect */
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 2.2rem;
+      border-radius: 20px; /* Softer corners */
+      padding: 2.5rem; /* More padding for content breathing room */
       box-shadow: var(--shadow);
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing for slick feel */
       position: relative;
       overflow: hidden;
     }
-
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(139, 92, 246, 0.35); /* Subtle purple glow on hover */
     }
-
     .card::before {
       content: '';
       position: absolute;
@@ -104,88 +137,83 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+      background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
       pointer-events: none;
     }
-
     .card:hover::before {
       opacity: 1;
     }
-
     .card h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+      font-size: 1.8rem; /* Larger for emphasis */
+      margin-bottom: 1.2rem;
       color: var(--purple-accent);
+      font-weight: 600; /* Semi-bold for professionalism */
     }
-
     .card p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
+      color: var(--gray-light); /* Shifted to lighter gray for better contrast and tone */
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem; /* Added margin for spacing */
     }
-
     .btn {
       display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.9rem 2rem;
+      padding: 1rem 2.5rem; /* Larger for better clickability */
       background: linear-gradient(135deg, var(--purple-accent), var(--purple-dark));
-      color: white;
+      color: var(--text-primary);
       text-decoration: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: 1.05rem;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
     }
-
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-accent)); /* Reversed gradient for dynamic feel */
     }
-
     footer {
       text-align: center;
       padding: 3rem 1rem 2rem;
-      color: var(--text-secondary);
+      color: var(--gray-medium); /* Medium gray for subtle footer */
       font-size: 0.95rem;
-      border-top: 1px solid rgba(139, 92, 246, 0.1);
+      border-top: 1px solid rgba(139, 92, 246, 0.08);
+      background: var(--black-tone); /* Added black tone for footer base */
+      position: relative;
+      z-index: 1; /* Above the glow */
     }
-
     @media (max-width: 768px) {
-      h1 { font-size: 2.6rem; }
-      main { padding: 3rem 5%; }
+      h1 { font-size: 2.8rem; }
+      main { padding: 3rem 5%; gap: 2rem; }
+      .card { padding: 2rem; }
     }
   </style>
 </head>
 <body>
   <div class="bg-glow"></div>
-
   <header>
-    <h1>Welcome to: Website256</h1>
-    <p class="subtitle">My website to show you my projects and games and anything else I wanna share</p>
+    <h1>Website256</h1> <!-- Simplified for professionalism -->
+    <p class="subtitle">Showcasing my projects, games, and other creative works</p> <!-- Refined language -->
   </header>
-
   <main>
     <div class="card">
-      <h2>Favicon-Minecraft</h2>
-      <p>It is a web version of minecraft but... WHAT THE HECK IT RUNS IN YOUR BROWSER ICON TOO!??!??</p>
-      <a href="https://phantom-void.github.io/Minecraft-Favicon/" class="btn">Play Now!</a>
+      <h2>Favicon Minecraft</h2> <!-- Cleaned title -->
+      <p>A web-based version of Minecraft that remarkably runs within your browser's favicon.</p> <!-- Toned down for professionalism -->
+      <a href="https://phantom-void.github.io/Minecraft-Favicon/" class="btn">Play Now</a>
     </div>
-
     <div class="card">
       <h2>Nothing</h2>
-      <p>This is a zero-width text encoder.</p>
-      <a href="https://phantom-void.github.io/Nothing/" class="btn">Have a Look!</a>
+      <p>A zero-width text encoder tool.</p> <!-- Slight refinement -->
+      <a href="https://phantom-void.github.io/Nothing/" class="btn">View Project</a> <!-- Updated button text for consistency -->
     </div>
-
     <div class="card">
-      <h2>Dot dot dot</h2>
-      <p>Under cunstruction</p>
-      <a href="#" class="btn">...</a>
+      <h2>Dot Dot Dot</h2> <!-- Capitalized for consistency -->
+      <p>Currently under construction.</p> <!-- Corrected spelling and phrasing -->
+      <a href="#" class="btn">Coming Soon</a> <!-- Updated text to be more professional -->
     </div>
+    <!-- Add more cards here as needed; the structure is easy to duplicate -->
   </main>
-
   <footer>
     <p>&copy; 2026 • Josiah Windle</p>
   </footer>
